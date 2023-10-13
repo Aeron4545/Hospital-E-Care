@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookings Filter</title>
+  <style>
+    body {
+    background-image: url("1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      color: #333;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      margin-right: 10px;
+      color: #ffffff;
+    }
+    input[type="text"], input[type="date"] {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      color: #0e0e0e;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      background-color: #fff;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #f9f9f9;
+      text-align: left;
+    }
+    .header {
+      background-color: #16f5f5;
+      padding: 10px;
+      color: #fff;
+      text-align: right;
+    }
+
+    .header button {
+      margin-left: 10px;
+      padding: 5px 10px;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .header button:hover {
+      background-color: #45a049;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+     <div class="header">
+        <button onclick="window.location.href='display_bookings.html'">Bookings</button>
+        <button onclick="window.location.href='admin.php'">Doctors</button>
+        <button onclick="window.location.href='admin1.php'">Availability</button>
+        <button onclick="window.location.href='nurse.php'">Logout</button>
+      </div>
+  <form id="filterForm">
+    <label for="doctorIdInput">Doctor ID:</label>
+    <input type="text" id="doctorIdInput" name="doctor_id">
+
+    <label for="dateInput">Select Date:</label>
+    <input type="date" id="dateInput" name="date">
+    
+    <button type="submit">Filter</button>
+  </form>
+  <div id="filteredBookings">
+  </div>
+  <script>
+    function filterBookings() {
+      var xhr = new XMLHttpRequest();
+      var form = document.getElementById('filterForm');
+      var formData = new FormData(form);
+
+      xhr.open('GET', 'display_bookings.php?' + new URLSearchParams(formData).toString(), true);
+
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var filteredBookings = JSON.parse(xhr.responseText);
+          var bookingsTable = '<table>' +
+                              '<thead><tr>' +
+                              '<th>User Name</th>' +
+                              '<th>User ID</th>' +
+                              '<th>Doctor ID</th>' +
+                              '<th>Doctor Name</th>' +
+                              '<th>Department</th>' +
+                              '<th>Time Slot</th>' +
+                              '<th>Date</th>' +
+                              '</tr></thead><tbody>';
+          for (var i = 0; i < filteredBookings.length; i++) {
+            var booking = filteredBookings[i];
+            bookingsTable += '<tr>' +
+                             '<td>' + booking.user_name + '</td>' +
+                             '<td>' + booking.user_id + '</td>' +
+                             '<td>' + booking.doctor_id + '</td>' +
+                             '<td>' + booking.doctor + '</td>' +
+                             '<td>' + booking.department + '</td>' +
+                             '<td>' + booking.time_slot + '</td>' +
+                             '<td>' + booking.date + '</td>' +
+                             '</tr>';
+          }
+          bookingsTable += '</tbody></table>';
+          document.getElementById('filteredBookings').innerHTML = bookingsTable;
+        }
+      };
+      xhr.send();
+    }
+    var form = document.getElementById('filterForm');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      filterBookings();
+    });
+
+    var inputs = form.querySelectorAll('input, select');
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener('change', filterBookings);
+    }
+    filterBookings();
+  </script>
+</body>
+</html>

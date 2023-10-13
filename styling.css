@@ -1,0 +1,234 @@
+
+
+body{
+  margin:0;
+  padding:0;
+}
+
+
+p1 {
+  background-color: #f5164e;
+    position: absolute;
+    margin: 10px 0;
+    padding: 60px;
+    width: 700px;
+    height: 80px;
+    border: 5px solid #999999;
+    left: 50px;
+    top: 60px;
+    text-align: center;
+
+    font-size: 40px;
+    font-family: "Times New Roman";
+}
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Float four columns side by side */
+  .column {
+    float: left;
+    width:9.6%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {margin: 0 -5px;
+  position:relative;
+  top: 175px;
+  left:40px;
+  
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #16f5f5;
+    width:125px;
+    height:150px;
+  }
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 47%;
+  border-radius: 10px; /* To make the corners curved */
+  overflow: hidden; /* To hide the content that exceeds the rounded corners */
+  max-height: 250px; /* Set a maximum height for the table */
+  overflow-y: auto;
+  position: relative;
+  top:200px;
+  left:45px; /* Enable vertical scrolling for the table */
+}
+
+/* Style the table header and data cells */
+th, td {
+  padding: 12px 4px;
+  background-color: #00e6e6;
+  color: rgb(0, 0, 0);
+  border: none; /* Remove borders from th and td */
+}
+
+/* Add some box-shadow to give a raised effect */
+table {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Add some margin to the table container */
+.table-container {
+  margin-top: 20px;
+}
+
+/* Optional: Add some hover effect to the table rows */
+tr:hover {
+  background-color: #e5e0e0;
+}
+
+
+.button-container {
+  position: relative;
+  /* Add any desired positioning properties here */
+  top: 50px;
+  left: 20px;
+  background-color:#4caf50;
+}
+.button-container button {
+  background-color: #4caf50;
+  color: #fff;
+}
+details-button{
+  background-color: #4caf50;
+
+}
+
+
+  /* Styling for the form container */
+  #appointmentFormContainer {
+    position: absolute;
+    top: 73px;
+    right: 200px;
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: rgba(249, 249, 249, 0.9); /* Updated: Use rgba with an alpha value for transparency */
+  }
+
+  /* Styling for the form elements */
+  form {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  select,
+  input[type="date"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+  }
+
+
+
+
+
+/*feedback pop up css*/ 
+/* Your existing CSS styles */
+
+/* Modal styles */
+.backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black color */
+  z-index: 999; /* Higher z-index to appear above other content */
+}
+
+/* Styles for the modal container */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1000; /* Higher z-index than the backdrop to appear above it */
+}
+
+
+.feedback-entry {
+  /* Add your styles to format individual feedback entries */
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #ffffff; /* Optional background color for each entry */
+  border: 1px solid #ccc; /* Optional border for each entry */
+  border-radius: 5px;
+}
+
+
+
+/* Close button */
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
